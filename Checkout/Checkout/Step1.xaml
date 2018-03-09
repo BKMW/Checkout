@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Checkout.Step1">
+    <ContentPage.Content>
+        <StackLayout >
+            <StackLayout >
+                <StackLayout HorizontalOptions="FillAndExpand"  BackgroundColor="White" Padding="10,5,10,0">
+                    <Label Text="How you would like to pay ?"></Label>
+                    <Grid Margin="40,5,40,5" ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="70" >
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="FrameTapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+
+                            <StackLayout>
+                                <Image   Source="credit_card.png" HeightRequest="40" WidthRequest="40"></Image>
+                                <Label  Text="Credit Card" FontSize="12" HorizontalTextAlignment="Center" TextColor="DimGray"></Label>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" HeightRequest="70">
+                            <StackLayout>
+                                <Image   Source="Bank_Transfer.png" HeightRequest="40" WidthRequest="40" ></Image>
+                                <Label  Text="Bank Transfer" FontSize="12"  HorizontalTextAlignment="Center" TextColor="DimGray"></Label>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand"  BackgroundColor="White" Padding="10,5,10,5">
+                    <Label Text="Delivery Options"></Label>
+                    <Grid Margin="40,5,40,5" ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="70">
+                            <StackLayout>
+                                <Image   Source="Express_Shipping.png" HeightRequest="40" WidthRequest="40"></Image>
+                                <Label  Text="Express" FontSize="12" HorizontalTextAlignment="Center" TextColor="DimGray"></Label>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" HeightRequest="70">
+                            <StackLayout>
+                                <Image   Source="Normal_Shipping.png" HeightRequest="40" WidthRequest="40" ></Image>
+                                <Label  Text="Normal" FontSize="12"  HorizontalTextAlignment="Center" TextColor="DimGray"></Label>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+            </StackLayout >
+
+
+            <StackLayout Spacing="20">
+                <Grid Margin="40,5,40,5" ColumnSpacing="60">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Grid.Column="0" Grid.Row="0" Text="Subtotal" FontSize="13" HorizontalTextAlignment="Start" TextColor="DimGray" HeightRequest="40"></Label>
+                    <Label Grid.Column="0" Grid.Row="1" Text="Shipping" FontSize="13" HorizontalTextAlignment="Start" TextColor="DimGray"></Label>
+                    <Label Grid.Column="0" Grid.Row="2" Text="VAT" FontSize="13" HorizontalTextAlignment="Start" TextColor="DimGray"></Label>
+                    <Label Grid.Column="0" Grid.Row="3" Text="Total" FontSize="13" HorizontalTextAlignment="Start" TextColor="DimGray"  FontAttributes="Bold"></Label>
+
+
+                    <Label Grid.Column="1" Grid.Row="0" Text="9000.00" FontSize="13" HorizontalTextAlignment="End" TextColor="DimGray" ></Label>
+                    <Label Grid.Column="1" Grid.Row="1" Text="35.00" FontSize="13" HorizontalTextAlignment="End" TextColor="DimGray"></Label>
+                    <Label Grid.Column="1" Grid.Row="2" Text="456.00" FontSize="13" HorizontalTextAlignment="End" TextColor="DimGray"></Label>
+                    <Label Grid.Column="1" Grid.Row="3" Text="9450.00 SAR" FontSize="13" HorizontalTextAlignment="End" TextColor="DimGray"  FontAttributes="Bold"></Label>
+
+
+                </Grid>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

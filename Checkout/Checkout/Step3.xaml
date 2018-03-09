@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Checkout.Step3">
+    <ContentPage.Content>
+        <StackLayout >
+            <StackLayout >
+                <StackLayout HorizontalOptions="FillAndExpand"  BackgroundColor="White">
+                    <Label Text="Please review your cart "></Label>
+                    <StackLayout Padding="5,0,5,5" Spacing="1" BackgroundColor="White">
+                        <Grid >
+                            <ListView x:Name="ProductsList"  SeparatorVisibility="None" HasUnevenRows="True" >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell >
+                                            <Grid RowSpacing="10" ColumnSpacing="10">
+                                                <Grid.RowDefinitions >
+                                                    <RowDefinition Height="20" />
+                                                    <RowDefinition Height="20" />
+                                                    <RowDefinition Height="20" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <Image Grid.Row="0" Grid.Column="0" Source="{Binding Image}"  HorizontalOptions="StartAndExpand"  HeightRequest="100"  WidthRequest="100"/>
+
+                                                <Label  Grid.Row="0" Grid.Column="1" Text="{Binding Status}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12"   TextColor="DarkGray" />
+
+                                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding  Price}" FontSize="12" TextColor="Black" HorizontalOptions="End"  VerticalOptions="Center"   />
+
+
+                                            </Grid>
+
+
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </StackLayout >
+
+                </StackLayout>
+
+
+
+                <StackLayout Spacing="20">
+                    <Grid Margin="40,5,40,5" ColumnSpacing="60">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label Grid.Column="0" Grid.Row="0" Text="Subtotal" FontSize="13" HorizontalTextAlignment="Start" TextColor="DimGray" HeightRequest="40"></Label>
+                        <Label Grid.Column="0" Grid.Row="1" Text="Shipping" FontSize="13" HorizontalTextAlignment="Start" TextColor="DimGray"></Label>
+                        <Label Grid.Column="0" Grid.Row="2" Text="VAT" FontSize="13" HorizontalTextAlignment="Start" TextColor="DimGray"></Label>
+                        <Label Grid.Column="0" Grid.Row="3" Text="Total" FontSize="13" HorizontalTextAlignment="Start" TextColor="DimGray"  FontAttributes="Bold"></Label>
+
+
+                        <Label Grid.Column="1" Grid.Row="0" Text="9000.00" FontSize="13" HorizontalTextAlignment="End" TextColor="DimGray" ></Label>
+                        <Label Grid.Column="1" Grid.Row="1" Text="35.00" FontSize="13" HorizontalTextAlignment="End" TextColor="DimGray"></Label>
+                        <Label Grid.Column="1" Grid.Row="2" Text="456.00" FontSize="13" HorizontalTextAlignment="End" TextColor="DimGray"></Label>
+                        <Label Grid.Column="1" Grid.Row="3" Text="9450.00 SAR" FontSize="13" HorizontalTextAlignment="End" TextColor="DimGray"  FontAttributes="Bold"></Label>
+
+
+                    </Grid>
+
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

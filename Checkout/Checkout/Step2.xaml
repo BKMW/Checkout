@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Checkout.Step2">
+    <StackLayout> <!-- start form -->
+        <!-- start parent layout -->
+        <StackLayout Margin="20" Spacing="10">
+            <Label Text="Please Enter Shipping Adress" FontSize="Medium" TextColor="Black"/>
+            <Label Text="Reciever Name"></Label>
+            <Entry x:Name="Name" TextColor="Black"/>
+            <Label Text="Shipping Adress"></Label>
+            <Entry  x:Name="ShippingAdress" TextColor="Black"/>
+            <Label Text="City"></Label>
+            <Entry x:Name="City" TextColor="Black"/>
+            <Label Text="House Number"></Label>
+            <Entry x:Name="HouseNumber" TextColor="Black"/>
+            <Label Text="Street Name"></Label>
+            <Entry x:Name="StreetName" TextColor="Black"/>
+
+        </StackLayout>
+        <!-- end form -->
+       
+
+    </StackLayout> <!-- end parent layout -->
+
+     
+</ContentPage>

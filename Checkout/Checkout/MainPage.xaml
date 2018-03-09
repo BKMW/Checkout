@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Checkout"
+             x:Class="Checkout.MainPage">
+    <StackLayout> <!-- start parent layout -->
+        <StackLayout Padding="10,10"> 
+            <local:StepProgressBarControl  StepColor="#443e42" Steps="3" StepSelected="1" x:Name="stepBar"/>
+
+            <!--<Label BindingContext="{x:Reference stepBar}"
+               Text="{Binding StepSelected, StringFormat='The Step Selected is {0}'}"
+               FontAttributes="Bold"
+               FontSize="Large"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand" />-->
+
+        </StackLayout>
+        <!-- start step1 -->
+        <StackLayout x:Name="Step1Layout" Orientation="Vertical">
+
+            <StackLayout Padding="10,10,10,0">
+                <Label Text="How would you like to pay ?" TextColor="#443e42" Margin="0,5,0,5"></Label>
+                <StackLayout Orientation="Horizontal" Padding="30,0,30,0"  HorizontalOptions="FillAndExpand" >
+                    <Grid ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="90" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame x:Name="CreditCardFrame" CornerRadius="5" BackgroundColor="Gainsboro" Padding="0.5,0.5,0.5,0.5" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" HasShadow="False">
+                            <Frame BackgroundColor="White" HasShadow="False">
+                                <StackLayout >
+                                    <Image Source="credit_card.png"  HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="30" ></Image>
+                                    <Label Text="Credit Card" HorizontalOptions="Center"  FontSize="10" TextColor="#443e42"></Label>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnCreditCardTapped">
+                                    </TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Frame>
+
+                        <Frame x:Name="BankTransferFrame" CornerRadius="5" BackgroundColor="Gainsboro" Padding="0.5,0.5,0.5,0.5" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" HasShadow="False">
+                            <Frame BackgroundColor="White" HasShadow="False">
+                                <StackLayout >
+                                    <Image Source="Bank_Transfer.png"  HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="30" WidthRequest="120"></Image>
+                                    <Label Text="Bank Transfer" HorizontalOptions="Center"  FontSize="10" TextColor="#443e42"></Label>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnBankTransferTapped">
+                                    </TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                <Label Text="Delivery options" TextColor="#443e42"  Margin="0,5,0,5"></Label>
+                <StackLayout Orientation="Horizontal" Padding="30,0,30,0"  HorizontalOptions="FillAndExpand" >
+                    <Grid ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="90" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame CornerRadius="5" HasShadow="False" BackgroundColor="Gainsboro" Padding="0.5,0.5,0.5,0.5" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"  x:Name="ExpressShippingFrame">
+                            <Frame BackgroundColor="White" HasShadow="False">
+                                <StackLayout >
+                                    <Image Source="Express_Shipping.png"  HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="30" WidthRequest="120" ></Image>
+                                    <Label Text="Express shipping" HorizontalOptions="Center"  FontSize="10" TextColor="#443e42"></Label>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnExpressShippingTapped">
+                                    </TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Frame>
+                        <Frame   CornerRadius="5" HasShadow="False" BackgroundColor="Gainsboro" Padding="0.5,0.5,0.5,0.5" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" x:Name="NormalShippingFrame">
+                            <Frame BackgroundColor="White" HasShadow="False">
+                                <StackLayout >
+                                    <Image Source="Normal_Shipping.png"  HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="30"  WidthRequest="120" ></Image>
+                                    <Label Text="Normal shipping" HorizontalOptions="Center"  FontSize="10" TextColor="#443e42"></Label>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnNormalShippingTapped">
+                                        </TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+           
+            <StackLayout Padding="30,0,30,0">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="10*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Subtotal"  TextColor="#443e42"  HorizontalOptions="Start" WidthRequest="100" Grid.Row="0" Grid.Column="0"></Label>
+                    <Label Text="9000.00"  TextColor="#443e42"  HorizontalOptions="End" Grid.Row="0" Grid.Column="1"></Label>
+                    <Label Text="Shipping"  TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="1" Grid.Column="0" ></Label>
+                    <Label Text="35.00"  TextColor="#443e42"    HorizontalOptions="End" Grid.Row="1" Grid.Column="1" ></Label>
+                    <Label Text="VAT"   TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="2" Grid.Column="0" ></Label>
+                    <Label Text="456.00"  TextColor="#443e42"    HorizontalOptions="End" Grid.Row="2" Grid.Column="1" ></Label>
+                    <Label Text="TOTAL" FontAttributes="Bold" TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="3" Grid.Column="0" ></Label>
+                    <Label Text="9450.00 SAR" FontAttributes="Bold" TextColor="#443e42"   HorizontalOptions="End" Grid.Row="3" Grid.Column="1" ></Label>
+                </Grid>
+            </StackLayout>
+            <StackLayout Padding="10,0,10,0">
+                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Gainsboro" HeightRequest="0.5"></BoxView>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10,0,10,0"  HorizontalOptions="FillAndExpand" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Button Text="Back" BackgroundColor="#DBB34A"  Grid.ColumnSpan="5" Font="Default" TextColor="White"  HeightRequest="60" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"  Clicked="Button_OnBackStep1Clicked"></Button>
+                <Button Text="Next" BackgroundColor="#443e43" Grid.ColumnSpan="5"  TextColor="White" ContentLayout="Right,0"  HeightRequest="60" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Image="Right_Arrow.png" Clicked="Button_OnNextStep1Clicked"></Button>
+            </StackLayout>
+
+
+
+
+        </StackLayout>
+        <!-- end step1 -->
+        <!-- start step2 -->
+        <StackLayout  x:Name="Step2Layout" Orientation="Vertical" Margin="20">
+            <Label Text="Please Enter Shipping Adress" FontSize="Medium" TextColor="Black" Margin="0,0,0,10"/>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <ScrollView>
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <Label Text="Reciever Name"></Label>
+                        <Entry x:Name="Name" TextColor="Black"/>
+                        <Label Text="Shipping Adress"></Label>
+                        <Entry  x:Name="ShippingAdress" TextColor="Black"/>
+                        <Label Text="City"></Label>
+                        <Entry x:Name="City" TextColor="Black"/>
+                        <Label Text="House Number"></Label>
+                        <Entry x:Name="HouseNumber" TextColor="Black"/>
+                        <Label Text="Street Name"></Label>
+                        <Entry x:Name="StreetName" TextColor="Black"/>
+
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+           
+           
+            <StackLayout Orientation="Horizontal" Padding="10,0,10,0"  HorizontalOptions="FillAndExpand" HeightRequest="70" VerticalOptions="End">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Button Text="Back" BackgroundColor="#DBB34A"  Grid.ColumnSpan="5" Font="Default" TextColor="White"  HeightRequest="60" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"  Clicked="Button_OnBackStep2Clicked" ></Button>
+                <Button Text="Next" BackgroundColor="#443e43" Grid.ColumnSpan="5"  TextColor="White" ContentLayout="Right,0"  HeightRequest="60" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Image="Right_Arrow.png" Clicked="Button_OnNextStep2Clicked"></Button>
+            </StackLayout>
+        </StackLayout>
+        <!-- end step2 -->
+        <!-- start step3 -->
+        <StackLayout  x:Name="Step3Layout" Orientation="Vertical">
+            <StackLayout Padding="20,10,10,0">
+                <Label Text="Please review your cart" TextColor="#443e42" Margin="0,5,0,5"></Label>
+            </StackLayout>
+            <!-- start list view of products -->
+            <StackLayout Orientation="Vertical"   VerticalOptions="Fill" >
+                <ListView x:Name="ListProducts"  HasUnevenRows="True"   VerticalOptions="Fill" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10*"/>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="30*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout   VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
+                                        <Image Source="close.png" x:Key="{Binding ID}"  WidthRequest="15" VerticalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="RemoveProduct">
+                                                </TapGestureRecognizer>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <!--<Button x:Name="Delete" x:Key="{Binding ID}" Text="Delete" Clicked="remove"></Button>-->   
+                                    </StackLayout>
+                                    <Image Source="{Binding Image}"  VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1" >
+
+                                    </Image>
+                                    <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2">
+                                        <Label Text="{Binding Name}" TextColor="#44454a"  FontSize="14" />
+                                        <Label Text="{Binding Status}" TextColor="Gray" Margin="0,5,0,5"/>
+                                    </StackLayout>
+                                    <Label Text="{Binding Price}" TextColor="#44454a"  VerticalOptions="Center" FontSize="14" Margin="0,5,0,5"   HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="3"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+           <!-- end list view of  products -->
+            <StackLayout Padding="20,0,20,0">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25*" />
+                        <RowDefinition Height="25*" />
+                        <RowDefinition Height="25*" />
+                        <RowDefinition Height="25*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Subtotal"  TextColor="#443e42"  HorizontalOptions="Start" WidthRequest="100" Grid.Row="0" Grid.Column="0"></Label>
+                    <Label Text="9000.00"  TextColor="#443e42"  HorizontalOptions="End" Grid.Row="0" Grid.Column="1"></Label>
+                    <Label Text="Shipping"  TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="1" Grid.Column="0" ></Label>
+                    <Label Text="35.00"  TextColor="#443e42"    HorizontalOptions="End" Grid.Row="1" Grid.Column="1" ></Label>
+                    <Label Text="VAT"   TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="2" Grid.Column="0" ></Label>
+                    <Label Text="456.00"  TextColor="#443e42"    HorizontalOptions="End" Grid.Row="2" Grid.Column="1" ></Label>
+                    <Label Text="TOTAL" FontAttributes="Bold" TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="3" Grid.Column="0" ></Label>
+                    <Label Text="9450.00 SAR" FontAttributes="Bold" TextColor="#443e42"   HorizontalOptions="End" Grid.Row="3" Grid.Column="1" ></Label>
+                </Grid>
+            </StackLayout>
+            <!--<StackLayout Padding="10,0,10,0">
+                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Gainsboro" HeightRequest="0.5"></BoxView>
+            </StackLayout>-->
+            <StackLayout Orientation="Horizontal" Padding="10,0,10,0"  HorizontalOptions="FillAndExpand" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Button Text="Back" BackgroundColor="#DBB34A"  Grid.ColumnSpan="5" Font="Default" TextColor="White"  HeightRequest="60" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Clicked="Button_OnBackStep3Clicked" ></Button>
+                <Button Text="Pay" BackgroundColor="#443e43" Grid.ColumnSpan="5"  TextColor="White" ContentLayout="Right,0"  HeightRequest="60" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Image="Right_Arrow.png" Clicked="Button_OnNextStep3Clicked" ></Button>
+            </StackLayout>
+        </StackLayout>
+        <!-- end step3 -->
+
+
+        <!-- start footer bar -->
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="60" BackgroundColor="#443e42" Spacing="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+
+                </Grid.ColumnDefinitions>
+                <Image Source="Home.png" Grid.Row="0" Grid.Column="0" WidthRequest="20" HeightRequest="18" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Search.png" Grid.Row="0" Grid.Column="1" WidthRequest="20" HeightRequest="18" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Menu.png" Grid.Row="0" Grid.Column="2" WidthRequest="20" HeightRequest="18" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Cart.png" Grid.Row="0" Grid.Column="3" WidthRequest="20" HeightRequest="18" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Account.png" Grid.Row="0" Grid.Column="4" WidthRequest="20" HeightRequest="18" HorizontalOptions="CenterAndExpand"></Image>
+            </Grid>
+        </StackLayout>
+        <!-- end footer bar -->
+
+    </StackLayout> <!-- end parent layout -->
+   
+
+</ContentPage>
