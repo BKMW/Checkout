@@ -4,17 +4,40 @@
              xmlns:local="clr-namespace:Checkout"
              x:Class="Checkout.MainPage">
     <StackLayout> <!-- start parent layout -->
-        <StackLayout Padding="10,10"> 
-            <local:StepProgressBarControl  StepColor="#443e42" Steps="3" StepSelected="1" x:Name="stepBar"/>
-
-            <!--<Label BindingContext="{x:Reference stepBar}"
-               Text="{Binding StepSelected, StringFormat='The Step Selected is {0}'}"
-               FontAttributes="Bold"
-               FontSize="Large"
-               HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />-->
+        <!-- start step view render -->
+        <StackLayout Orientation="Horizontal" Padding="0,25,0,0" HorizontalOptions="CenterAndExpand">
+            <StackLayout  HorizontalOptions="Start" >
+                <Frame x:Name="EXStep1" CornerRadius="15" BackgroundColor="#443e42" Padding="1"  HasShadow="False" WidthRequest="30" HeightRequest="30">
+                    <Frame x:Name="INStep1" BackgroundColor="White" HasShadow="False" CornerRadius="15"  WidthRequest="30">
+                    </Frame>
+                </Frame>
+            </StackLayout>
+            <StackLayout Padding="10,20,10,0">
+                <BoxView HeightRequest="0.5" WidthRequest="80" BackgroundColor="Silver"></BoxView>
+            </StackLayout>
+            <StackLayout  HorizontalOptions="Center">
+                <Frame x:Name="EXStep2" CornerRadius="15" BackgroundColor="Gainsboro" Padding="1,1,1,1"  HasShadow="False" WidthRequest="30" HeightRequest="30">
+                    <Frame x:Name="INStep2" BackgroundColor="White" HasShadow="False" CornerRadius="15"  WidthRequest="30">
+                    </Frame>
+                </Frame>
+            </StackLayout>
+            <StackLayout Padding="10,20,10,0">
+                <BoxView HeightRequest="0.5" WidthRequest="80" BackgroundColor="Silver"></BoxView>
+            </StackLayout>
+            <StackLayout  HorizontalOptions="End" >
+                <Frame x:Name="EXStep3" CornerRadius="15" BackgroundColor="Silver" Padding="1,1,1,1" HasShadow="False" WidthRequest="30" HeightRequest="30">
+                    <Frame x:Name="INStep3" BackgroundColor="White" HasShadow="False" CornerRadius="15"  WidthRequest="30">
+                    </Frame>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="53,0,33,0" >
+            <Label x:Name="step1" TextColor="#443e42"  Text="1" HorizontalOptions="StartAndExpand"></Label>
+            <Label x:Name="step2" TextColor="Silver" Text="     2" HorizontalOptions="CenterAndExpand"></Label>
+            <Label x:Name="stepConfirm" TextColor="Silver" Text="Confirm" HorizontalOptions="EndAndExpand"></Label>
 
         </StackLayout>
+        <!-- end step view render -->
         <!-- start step1 -->
         <StackLayout x:Name="Step1Layout" Orientation="Vertical">
 
@@ -181,8 +204,9 @@
             <StackLayout Padding="20,10,10,0">
                 <Label Text="Please review your cart" TextColor="#443e42" Margin="0,5,0,5"></Label>
             </StackLayout>
-            <!-- start list view of products -->
+           <!-- start shopping card -->
             <StackLayout Orientation="Vertical"   VerticalOptions="Fill" >
+                <!-- start list view of products -->
                 <ListView x:Name="ListProducts"  HasUnevenRows="True"   VerticalOptions="Fill" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -198,7 +222,7 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout   VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
-                                        <Image Source="close.png" x:Key="{Binding ID}"  WidthRequest="15" VerticalOptions="Center">
+                                        <Image Source="close.png" x:Name="{Binding ID}"  x:Key="{Binding ID}"  WidthRequest="20" VerticalOptions="Center">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="RemoveProduct">
                                                 </TapGestureRecognizer>
@@ -219,30 +243,34 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <!-- end list view of  products -->
+                <!-- start price -->
+                <!--<StackLayout Padding="20,0,20,0">-->
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25*" />
+                            <RowDefinition Height="25*" />
+                            <RowDefinition Height="25*" />
+                            <RowDefinition Height="25*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Subtotal"  TextColor="#443e42"  HorizontalOptions="Start" WidthRequest="100" Grid.Row="0" Grid.Column="0"></Label>
+                        <Label Text="9000.00"  TextColor="#443e42"  HorizontalOptions="End" Grid.Row="0" Grid.Column="1"></Label>
+                        <Label Text="Shipping"  TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="1" Grid.Column="0" ></Label>
+                        <Label Text="35.00"  TextColor="#443e42"    HorizontalOptions="End" Grid.Row="1" Grid.Column="1" ></Label>
+                        <Label Text="VAT"   TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="2" Grid.Column="0" ></Label>
+                        <Label Text="456.00"  TextColor="#443e42"    HorizontalOptions="End" Grid.Row="2" Grid.Column="1" ></Label>
+                        <Label Text="TOTAL" FontAttributes="Bold" TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="3" Grid.Column="0" ></Label>
+                        <Label Text="9450.00 SAR" FontAttributes="Bold" TextColor="#443e42"   HorizontalOptions="End" Grid.Row="3" Grid.Column="1" ></Label>
+                    </Grid>
+                <!--</StackLayout>-->
+                <!-- end price -->
             </StackLayout>
-           <!-- end list view of  products -->
-            <StackLayout Padding="20,0,20,0">
-                <Grid >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="25*" />
-                        <RowDefinition Height="25*" />
-                        <RowDefinition Height="25*" />
-                        <RowDefinition Height="25*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Text="Subtotal"  TextColor="#443e42"  HorizontalOptions="Start" WidthRequest="100" Grid.Row="0" Grid.Column="0"></Label>
-                    <Label Text="9000.00"  TextColor="#443e42"  HorizontalOptions="End" Grid.Row="0" Grid.Column="1"></Label>
-                    <Label Text="Shipping"  TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="1" Grid.Column="0" ></Label>
-                    <Label Text="35.00"  TextColor="#443e42"    HorizontalOptions="End" Grid.Row="1" Grid.Column="1" ></Label>
-                    <Label Text="VAT"   TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="2" Grid.Column="0" ></Label>
-                    <Label Text="456.00"  TextColor="#443e42"    HorizontalOptions="End" Grid.Row="2" Grid.Column="1" ></Label>
-                    <Label Text="TOTAL" FontAttributes="Bold" TextColor="#443e42"   HorizontalOptions="Start" Grid.Row="3" Grid.Column="0" ></Label>
-                    <Label Text="9450.00 SAR" FontAttributes="Bold" TextColor="#443e42"   HorizontalOptions="End" Grid.Row="3" Grid.Column="1" ></Label>
-                </Grid>
-            </StackLayout>
+         <!-- end shopping card -->
+           
             <!--<StackLayout Padding="10,0,10,0">
                 <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Gainsboro" HeightRequest="0.5"></BoxView>
             </StackLayout>-->

@@ -12,14 +12,14 @@ namespace Checkout
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Step2 : ContentPage
 	{
-        private List<CurrentUser> AdressShipping;
+        private List<User> AdressShipping;
 
         public Step2 ()
 		{
 			InitializeComponent ();
-            AdressShipping = new List<CurrentUser>()
+            AdressShipping = new List<User>()
             {
-                new CurrentUser()
+                new User()
                 {
                     Title= "Please Enter Shipping Adress",
                     IsVisible = false

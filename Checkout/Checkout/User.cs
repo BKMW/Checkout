@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Checkout
 {
-   public class CurrentUser
+   public class User
     {
 
         public String Title { get; set; }
